@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Web Page Content</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <style>
+        body {
+            transition: background-color 1s;
+            font-family: Arial, sans-serif;
+        }
+        #data {
+            display: none; /* Hidden initially for the reveal animation */
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<span id="data"></span>
+<div id="info"></div>
+
+<script>
+    $(document).ready(function(){
+        // when ready, grab the html 
+        getContents();
+    });
+
+    function getContents(){
+        $.ajax({
+            url: 'https://f28wp.github.io/material/tasks/Task%2008%20-%20AJAX%20&%20JSON.html',
+            success: function(data) {
+                console.log(data);
+                $('#data').html(data);
+
+                // Display the length of content received
+                let contentLength = $(data).text().length;
+                $('#info').text("Content length: " + contentLength + " characters.");
+
+                // Change background color based on content length
+                if(contentLength < 1000) {
+                    $("body").css("background-color", "#ffdddd");
+                } else if(contentLength < 5000) {
+                    $("body").css("background-color", "#ddffdd");
+                } else {
+                    $("body").css("background-color", "#ddddff");
+                }
+
+                // Animate the content display
+                $('#data').slideDown('slow').animate({
+                    left: '50px',
+                }, 1000).animate({
+                    left: '0px',
+                }, 1000);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
