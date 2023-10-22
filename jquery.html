@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        #divContent {
+            font-size: 40px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <button>Fetch Data</button>
+    <div id="divContent">
+        Default Content
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#divContent").load("https://jsonplaceholder.typicode.com/posts");
+            });
+        });
+    </script>
+</body>
+</html>
