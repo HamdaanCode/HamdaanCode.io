@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption and Decryption</title>
+    <!-- Include CryptoJS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+
+<script>
+    // Encryption function
+    function encryptData(data, secretKey) {
+        var encrypted = CryptoJS.AES.encrypt(data, secretKey);
+        return encrypted.toString();
+    }
+
+    // Decryption function
+    function decryptData(encryptedData, secretKey) {
+        var decrypted = CryptoJS.AES.decrypt(encryptedData, secretKey);
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
+    // Example usage
+    var originalData = "This is a secret message!";
+    var secretKey = "Ballers";
+
+    // Encrypt the data
+    var encryptedData = encryptData(originalData, secretKey);
+    console.log("Encrypted Data:", encryptedData);
+
+    // Decrypt the data
+    var decryptedData = decryptData(encryptedData, secretKey);
+    console.log("Decrypted Data:", decryptedData);
+</script>
+
+</body>
+</html>
