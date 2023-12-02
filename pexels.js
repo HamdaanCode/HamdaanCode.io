@@ -1,5 +1,3 @@
-
-
 const apiKey = "yOoojWaXQrBgWE7w7SpGoKqwmceKffvKFoogNEHwuMuLzKUTiuDZEtl1";
 
 fetch("https://api.pexels.com/v1/search?query=people", {
@@ -14,7 +12,7 @@ fetch("https://api.pexels.com/v1/search?query=people", {
 
     data.photos.forEach(photo => {
       const imgElement = document.createElement("img");
-      imgElement.src = photo.src.medium; // You can use different resolutions as needed
+      imgElement.src = photo.src.medium; 
       imgElement.alt = photo.photographer;
       imageContainer.appendChild(imgElement);
     });
